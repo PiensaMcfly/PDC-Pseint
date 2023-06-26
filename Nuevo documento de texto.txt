@@ -1,0 +1,49 @@
+Definir Frase Como 
+para i<-0 Hasta Longitud(Frase)-1 Hacer
+		v=Subcadena(Frase,i,i)
+		
+		Segun v hacer
+			"a": x=x+1
+				Si x>=2 Entonces
+					Escribir Sin Saltar f 
+				SiNo
+					Escribir Sin Saltar v
+					
+				FinSi
+			"e": j=j+1
+				Si j>=2 Entonces
+					Escribir Sin Saltar f 
+				SiNo
+					Escribir Sin Saltar v
+					
+				FinSi
+			"i": k=k+1
+				Si k>=2 Entonces
+					Escribir Sin Saltar f 
+				SiNo
+					Escribir Sin Saltar v
+					
+				FinSi
+			"o": s=s+1
+				Si s>=2 Entonces
+					Escribir Sin Saltar f 
+				SiNo
+					Escribir Sin Saltar v
+					
+				FinSi
+			"u": t=t+1
+				Si t>=2 Entonces
+					Escribir Sin Saltar f 
+				SiNo
+					Escribir Sin Saltar v
+					
+				FinSi
+			De Otro Modo:
+				Escribir Sin Saltar v
+			
+		FinSegun
+	FinPara
+
+
+
+

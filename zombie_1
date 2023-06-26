@@ -1,0 +1,98 @@
+///Tu misión: hacer un programa que permita ingresar una muestra completa, detectar si es válida, y de ser así, que 
+///imprima la matriz y muestre un mensaje que indique si se ha detectado o no el gen Z
+//Reglas de Resolución:
+//	a) Es obligatorio el uso de al menos una variable N-dimensional.
+//	b) La muestra la guardamos en una variable en el código, no por consola
+//	c) Subdivida el problema de tal forma de utilizar al menos dos subprogramas.
+Algoritmo sin_titulo
+	Definir matriz, muestra Como Caracter
+	Definir i,j,n Como Real
+	i=0
+	j=0
+	muestra="CDDACCACCACAAABC"
+	n=raiz(longitud(muestra))
+	Dimension matriz(n,n)
+	si Longitud(muestra)<>9 y Longitud(muestra)<>16 y Longitud(muestra)<>1369
+		Escribir "El cógido ingresado no es válido, lo siento."
+	sino
+		rellenar(matriz,muestra,i,j,n)
+		Si validar(matriz,i,j,n) = Verdadero
+			Escribir "El código ingresado es válido: "
+			mostrar_m(matriz,i,j,n)
+			Si corroborar(matriz,i,j,n)=Verdadero
+				Escribir "FELICITACIONES, SE HA DETECTADO EL GEN Z"
+			SiNo
+				Escribir "LO SIENTO, NO SE DETECTÓ EL GEN Z"
+			FinSi
+		SiNo
+			Escribir "El cógido ingresado no es válido, lo siento."
+		FinSi
+	finSi
+FinAlgoritmo
+///-----------------------------------------------> PROCESO DE LLENADO
+SubProceso rellenar(mm,m,i,j,n)
+	Definir a Como Entero
+	a=0
+	Para i<-0 hasta n-1
+		Para j<-0 hasta n-1
+			mm(i,j)=Subcadena(m,a,a)
+			a=a+1
+		FinPara
+	FinPara
+FinSubProceso
+///-----------------------------------------------> PROCESO DE VALIDACIÓN DE CÓDIGO
+Funcion retorno<-validar(m,i,j,n)
+	Definir retorno Como Logico
+	retorno=falso
+	Para i<-0 hasta n-1
+		Para j<-0 hasta n-1
+			Segun m(i,j)
+				"A","B","C","D": 
+					retorno=Verdadero
+				De Otro Modo:
+					retorno=Falso
+					j=n-1
+					i=n-1
+			FinSegun
+		FinPara
+	FinPara
+FinFuncion
+///-----------------------------------------------> PROCESO DE MUESTRA
+SubProceso mostrar_m(mm,i,j,n)
+	Para i<-0 hasta n-1
+		Para j<-0 Hasta n-2
+			Escribir mm(i,j) " " Sin Saltar
+		FinPara
+		Escribir mm(i,j)
+	FinPara
+FinSubProceso
+///-----------------------------------------------> PROCESO DE VALIDACIÓN DE GEN
+Funcion retorno<-corroborar(m,i,j,n)
+	Definir aux,aux2 Como Caracter
+	Definir retorno Como Logico
+	Definir cont,a Como Entero
+	aux=m(0,0)
+	aux2=m(0,n-1)
+	cont=0
+	a=n-1
+	Para i<-0 hasta n-1
+		Para j<-0 hasta n-1
+			si i=j y aux=m(i,j)
+				cont=cont+1
+			FinSi
+		FinPara
+	FinPara
+	Para i<-0 hasta n-1
+		Para j<-n-1 hasta 0 Con Paso -1
+			Si i+j = n-1 y m(i,j)=aux2
+				cont=cont+1
+			FinSi
+		FinPara
+	FinPara
+	Si cont=n*2
+		retorno=Verdadero
+	FinSi
+FinFuncion
+
+
+	
